@@ -62,22 +62,28 @@ public class VCmd {
 			case "3":
 				// set
 				System.out.println("Introduce tu numero de expediente: ");
-				int expedienteToSearch = scanner.nextInt();
-				int posJugador = buscarJugador(expedienteToSearch);
-				if (posJugador != 0) {
+				int expedienteToEdit = scanner.nextInt();
+				int posJugadorEdit = buscarJugador(expedienteToEdit);
+				if (posJugadorEdit != 0) {
 					System.out.println("Introduce tu nuevo nombre: ");
 					String newNombre = scanner.next();
 					System.out.println("Introduce tu nuevo numero de expediente: ");
 					int newNumExpediente = scanner.nextInt();
-					jugadores.get(posJugador).setNombre(newNombre);
-					jugadores.get(posJugador).setNumExpediente(newNumExpediente);
-				} else if (posJugador == 0) {
-					System.out.println("Numero de expediente no encontrado.");
+					jugadores.get(posJugadorEdit).setNombre(newNombre);
+					jugadores.get(posJugadorEdit).setNumExpediente(newNumExpediente);
+				} else if (posJugadorEdit == 0) {
+					System.out.println("Numero de expediente no encontrado, no se puede editar.");
 				}
 				break;
 			case "4":
-				// delete
-
+				System.out.println("Introduce tu numero de expediente: ");
+				int expedienteToDelete = scanner.nextInt();
+				int posJugadorDelete = buscarJugador(expedienteToDelete);
+				if (posJugadorDelete != 0) {
+					jugadores.remove(posJugadorDelete);
+				} else if (posJugadorDelete == 0) {
+					System.out.println("Numero de expediente no encontrado, no se puede borrar.");
+				}
 				break;
 			case "5":
 				break;
