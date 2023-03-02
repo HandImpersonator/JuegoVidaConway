@@ -5,22 +5,19 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
-import jugador.Jugador;
+import jugador.model.Jugador;
+import jugador.repositorio.FileUtil;
+import jugador.repositorio.RepoFile;
+import jugador.repositorio.RepoMemo;
 
 public class VCmd {
-	private List<Jugador>jugadores;
-
+	//private RepoMemo jugadores;
+	private RepoFile jugadores;
 	public VCmd() {
-		jugadores = new Vector<Jugador>();
+		//jugadores = new RepoMemo();
+		jugadores = new RepoFile();
 	}
-	private int buscarJugador(int expediente) {
-		for(int i = 0;i<jugadores.size();i++) {
-			if(jugadores.get(i).equals(new Jugador("",expediente))) {
-				return i;
-			}
-		}
-		return -1;
-	}
+	
 
 	public void menu() {
 		boolean sigue = true;
@@ -44,17 +41,18 @@ public class VCmd {
 				System.out.println("Introduce tu expediente: ");
 				int expediente = scanner.nextInt();
 				Jugador jugador = new Jugador(nombre,expediente);
-				jugadores.add(jugador);
+				jugadores.create(jugador);
 				break;
 			case "2":
-				for(int i = 0;i<jugadores.size();i++) {
-					System.out.println(jugadores.get(i));
+				List<Jugador> j = jugadores.read();
+				for(int i = 0;i<j.size();i++) {
+					System.out.println(j.get(i));
 				}
 				break;
 			case "3":
 				System.out.println("Introduce tu expediente: ");
 				int expedienteToSearch = scanner.nextInt();
-				int jugadorToSearch = buscarJugador(expedienteToSearch);
+				int jugadorToSearch = jugadores.buscar(expedienteToSearch);
 				if ( jugadorToSearch == -1) {
 					System.out.println("No se ha encontrado este jugador");
 				}
@@ -63,13 +61,13 @@ public class VCmd {
 					String nombreNew = scanner.next();
 					System.out.println("Introduce tu expediente: ");
 					int expedienteNew = scanner.nextInt();
-					jugadores.set(jugadorToSearch, new Jugador(nombreNew,expedienteNew));
+					jugadores.update(jugadorToSearch, new Jugador(nombreNew,expedienteNew));
 				}
 				break;
 			case "4":
 				System.out.println("Introduce tu expediente: ");
 				int expedienteToDelete = scanner.nextInt();
-				int jugadorToDelete = buscarJugador(expedienteToDelete);
+				int jugadorToDelete = jugadores.buscar(expedienteToDelete);
 				if ( jugadorToDelete == -1) {
 					System.out.println("No se ha encontrado este jugador");
 				}
