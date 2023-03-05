@@ -14,7 +14,6 @@ public class VCmd {
 	//private RepoMemo jugadores;
 	private RepoFile jugadores;
 	public VCmd() {
-		//jugadores = new RepoMemo();
 		jugadores = new RepoFile();
 	}
 	

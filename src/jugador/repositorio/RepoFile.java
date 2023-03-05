@@ -6,13 +6,11 @@ import java.util.Vector;
 import jugador.model.Jugador;
 
 public class RepoFile {
-	private List<Jugador>jugadores;
+	private List<Jugador> jugadores;
 	private FileUtil fichero;
 	public RepoFile() {
 		fichero = new FileUtil();
-		this.jugadores = fichero.read();
-		
-		
+		this.jugadores = fichero.read();	
 	}
 	
 	public void create (Jugador jugador) {
