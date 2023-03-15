@@ -1,24 +1,26 @@
 package jugador.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import common.util.FileUtil;
 import jugador.model.Jugador;
 
-public class RepoFileJugador implements IRepoJugador {
+public class RepoFileBinJugador implements IRepoJugador {
 	private List<Jugador> jugadores;
-	private FileUtilJugador fichero;
+	private final String ruta = "data/jugador.dat";
 	
-	public RepoFileJugador() {
-		fichero = new FileUtilJugador();
-		this.jugadores = fichero.read();	
+	public RepoFileBinJugador() {
+		this.jugadores = new ArrayList<>();	
 	}
 	
 	public void create(Jugador jugador) {
 		jugadores.add(jugador);
-		fichero.save(jugadores);
+		FileUtil.serializeFromListToFile(ruta,jugadores);
 	}
 	public List<Jugador> read(){
+		jugadores = FileUtil.deserializeFromFileToList(ruta);
 		return jugadores;
 	}
 	public boolean update(int posx, Jugador jugador) {
@@ -27,6 +29,7 @@ public class RepoFileJugador implements IRepoJugador {
 		}
 		else {
 			jugadores.set(posx, jugador);
+			FileUtil.serializeFromListToFile(ruta,jugadores);
 			return true;
 		}
 	}
@@ -35,6 +38,7 @@ public class RepoFileJugador implements IRepoJugador {
 			return false;
 		} else {
 			jugadores.remove(posx);
+			FileUtil.serializeFromListToFile(ruta,jugadores);
 			return true;
 		}
 	}

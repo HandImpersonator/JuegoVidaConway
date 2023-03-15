@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import jugador.model.Jugador;
 
-public class RepoMemoJugador {
+public class RepoMemoJugador implements IRepoJugador {
 
 	private List<Jugador> jugadores;
 

@@ -8,8 +8,6 @@ import java.util.Vector;
 import juego.model.Juego;
 import juego.repositorio.RepoFileJuego;
 import jugador.model.Jugador;
-import jugador.repositorio.RepoFile;
-import jugador.repositorio.RepoMemo;
 
 public class ViewCmdJuego {
 	private RepoFileJuego juegos;

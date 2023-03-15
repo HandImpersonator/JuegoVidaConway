@@ -2,7 +2,7 @@ package partida.model;
 
 import juego.model.Juego;
 import jugador.model.Jugador;
-import reglas.model.Regla;
+import regla.model.Regla;
 
 public class Partida {
 	private int idPartida;
@@ -13,10 +13,9 @@ public class Partida {
 	private Juego juego; // Contiene la dimension de la partida.
 	private Regla reglas; // Contiene las reglas de la partida.
 
-	public Partida(int idPartida, int numCeldasVivasInicio, Juego juego, Regla reglas) {
+	public Partida(int idPartida, int numCeldasVivasInicio,Regla reglas) {
 		this.idPartida = idPartida;
 		this.numCeldasVivasInicio = numCeldasVivasInicio;
-		this.juego = juego;
 		this.reglas = reglas;
 		numCeldasMuertas = 0;
 		numCeldasVivasFinal = numCeldasVivasInicio;

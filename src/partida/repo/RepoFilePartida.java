@@ -25,7 +25,7 @@ public class RepoFilePartida {
 	}
 	public int buscar(int id) {
 		for(int i = 0; i < partidas.size(); i++) {
-			if(partidas.get(i).equals(new Partida(id, 0, null, null))) {
+			if(partidas.get(i).equals(new Partida(id, 0, null))) {
 				return i;
 			}
 		}

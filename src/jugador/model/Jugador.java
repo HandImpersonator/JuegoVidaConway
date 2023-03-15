@@ -1,11 +1,13 @@
 package jugador.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
 
 import partida.model.Partida;
 
-public class Jugador {
+public class Jugador implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private int numExpediente;
 	private List<Partida> partidas;

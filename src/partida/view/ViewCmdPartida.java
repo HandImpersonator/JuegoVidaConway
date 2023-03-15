@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import juego.model.Juego;
-import reglas.model.Regla;
+import regla.model.Regla;
 import partida.model.Partida;
 import partida.repo.FileUtilPartida;
 import partida.repo.RepoFilePartida;
@@ -41,9 +41,8 @@ public class ViewCmdPartida {
 					int idPartida = scanner.nextInt();
 					System.out.println("Introduce número de celdas vivas iniciales: ");
 					int numCeldasVivasInicio = scanner.nextInt();
-					Juego juego = new Juego(5);
-					Regla reglas = new Regla(2, 3);
-					Partida Partida = new Partida(idPartida, numCeldasVivasInicio, juego, reglas);
+					Regla reglas = new Regla(2, 3,1);
+					Partida Partida = new Partida(idPartida, numCeldasVivasInicio,reglas);
 					partidas.create(Partida);
 					break;
 				case "2":

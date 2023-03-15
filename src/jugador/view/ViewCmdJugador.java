@@ -7,14 +7,15 @@ import java.util.Vector;
 
 import jugador.model.Jugador;
 import jugador.repo.FileUtilJugador;
+import jugador.repo.IRepoJugador;
+import jugador.repo.RepoFileBinJugador;
 import jugador.repo.RepoFileJugador;
 import jugador.repo.RepoMemoJugador;
 
 public class ViewCmdJugador {
-	//private RepoMemo jugadores;
-	private RepoFileJugador jugadores;
+	private IRepoJugador jugadores;
 	public ViewCmdJugador() {
-		jugadores = new RepoFileJugador();
+		jugadores = new RepoFileBinJugador();
 	}
 	
 	public void menu() {
