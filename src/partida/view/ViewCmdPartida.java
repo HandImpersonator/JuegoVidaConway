@@ -1,21 +1,20 @@
 package partida.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import partida.model.Partida;
 import partida.repo.IRepoPartida;
 import partida.repo.RepoFileBinPartida;
-import partida.repo.RepoMemoPartida;
 import regla.model.Regla;
 
 
 public class ViewCmdPartida {
-    // private RepoMemoPartida partidas;
     private IRepoPartida partidas;
+    List<Integer> listaId = new ArrayList<Integer>();
 
     public ViewCmdPartida() {
-        // partidas = new RepoMemoPartida();
         partidas = new RepoFileBinPartida();
     }
 
@@ -37,8 +36,9 @@ public class ViewCmdPartida {
                     case "1":
                         System.out.println("Introduce número de celdas vivas iniciales: ");
                         int numCeldasVivasInicio = scanner.nextInt();
+                        int idPartida = partida.model.Partida.generateRandom(listaId);
                         Regla reglas = new Regla(2, 3, 1);
-                        Partida Partida = new Partida(numCeldasVivasInicio, reglas);
+                        Partida Partida = new Partida(idPartida, numCeldasVivasInicio, reglas);
                         partidas.create(Partida);
                         break;
                     case "2":
