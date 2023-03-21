@@ -47,7 +47,7 @@ public class RepoMemoPartida implements IRepoPartida {
     @Override
     public int buscar(int id) {
         for (int i = 0; i < partidas.size(); i++) {
-            if (partidas.get(i).equals(new Partida(id, 0, null))) {
+            if (partidas.get(i).equals(new Partida(id))) {
                 return i;
             }
         }

@@ -9,7 +9,7 @@ import partida.model.Partida;
 
 public class RepoFileBinPartida implements IRepoPartida {
     private List<Partida> partidas;
-    private final String ruta = "data\\partida.dat";
+    private final String ruta = "data/partida.dat";
 
     public RepoFileBinPartida() {
         this.partidas = new ArrayList<>();
@@ -52,7 +52,7 @@ public class RepoFileBinPartida implements IRepoPartida {
     @Override
     public int buscar(int id) {
         for (int i = 0; i < partidas.size(); i++) {
-            if (partidas.get(i).equals(new Partida(id, 0, null))) {
+            if (partidas.get(i).equals(new Partida(id))) {
                 return i;
             }
         }

@@ -13,7 +13,7 @@ import regla.model.Regla;
 
 public class FileUtilPartida {
     private final String separador = "#";
-    private final String ruta = "data\\partida.txt";
+    private final String ruta = "data/partida.txt";
 
     public boolean save(List<Partida> p) {
         FileWriter fichero = null;
@@ -32,6 +32,7 @@ public class FileUtilPartida {
         }
     }
 
+    @Deprecated
     public List<Partida> read() {
         List<Partida> datos = new Vector<>();
         File fichero = new File(ruta);

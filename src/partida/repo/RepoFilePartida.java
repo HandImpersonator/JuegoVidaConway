@@ -5,6 +5,7 @@ import java.util.List;
 import partida.model.Partida;
 
 
+@Deprecated
 public class RepoFilePartida implements IRepoPartida {
     private List<Partida> partidas;
     private FileUtilPartida fichero;

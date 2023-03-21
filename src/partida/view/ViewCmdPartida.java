@@ -4,17 +4,19 @@ import java.util.List;
 import java.util.Scanner;
 
 import partida.model.Partida;
+import partida.repo.IRepoPartida;
+import partida.repo.RepoFileBinPartida;
 import partida.repo.RepoMemoPartida;
 import regla.model.Regla;
 
 
 public class ViewCmdPartida {
-    private RepoMemoPartida partidas;
-    // private RepoFilePartida partidas;
+    // private RepoMemoPartida partidas;
+    private IRepoPartida partidas;
 
     public ViewCmdPartida() {
-        partidas = new RepoMemoPartida();
-        // partidas = new RepoFilePartida();
+        // partidas = new RepoMemoPartida();
+        partidas = new RepoFileBinPartida();
     }
 
     public void menu() {
@@ -33,17 +35,15 @@ public class ViewCmdPartida {
                 switch (opciones) {
 
                     case "1":
-                        System.out.println("Introduce tu expediente: ");
-                        int idPartida = scanner.nextInt();
                         System.out.println("Introduce número de celdas vivas iniciales: ");
                         int numCeldasVivasInicio = scanner.nextInt();
                         Regla reglas = new Regla(2, 3, 1);
-                        Partida Partida = new Partida(idPartida, numCeldasVivasInicio, reglas);
+                        Partida Partida = new Partida(numCeldasVivasInicio, reglas);
                         partidas.create(Partida);
                         break;
                     case "2":
-                        List<Partida> j = partidas.read();
-                        for (partida.model.Partida element : j) {
+                        List<Partida> p = partidas.read();
+                        for (partida.model.Partida element : p) {
                             System.out.println(element);
                         }
                         break;
