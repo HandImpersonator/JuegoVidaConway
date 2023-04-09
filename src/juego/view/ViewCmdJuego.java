@@ -6,12 +6,12 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import juego.model.Juego;
+import juego.repositorio.IRepoJuego;
 import juego.repositorio.RepoFileJuego;
 import jugador.model.Jugador;
 
 public class ViewCmdJuego {
-	private RepoFileJuego juegos;
-	RepoFileJuego repo = new RepoFileJuego();
+	private IRepoJuego juegos;
 	public ViewCmdJuego() {
 		juegos = new RepoFileJuego();
 	}
@@ -47,11 +47,11 @@ public class ViewCmdJuego {
 				System.out.println("Introduce la dimensión del eje y que quieras: ");
 				int dimY = scanner.nextInt();
 				Juego juego = new Juego(dimX,dimY,new Jugador(nombre,expediente),nombreJuego);
-				repo.create(juego);
+				juegos.create(juego);
 				break;
 
 			case "2":
-				List<Juego> games = repo.read();
+				List<Juego> games = juegos.read();
 				for(int i = 0;i<juegos.size();i++) {
 					System.out.println(games.get(i));
 				}
@@ -60,7 +60,7 @@ public class ViewCmdJuego {
 			case "3":
 				System.out.println("Introduce el nombre del juego : ");
 				String juegoToSearch = scanner.next();
-				int juegoPos = repo.buscar(juegoToSearch);
+				int juegoPos = juegos.buscar(juegoToSearch);
 				if ( juegoPos == -1) {
 					System.out.println("No se ha encontrado este juego");
 				}
@@ -69,7 +69,7 @@ public class ViewCmdJuego {
 					int dimXNew = scanner.nextInt();
 					System.out.println("Introduce la dimension en y: ");
 					int dimYNew = scanner.nextInt();
-					repo.update(juegoPos, new Juego(dimXNew,dimYNew,repo.read(juegoPos).getJugador(),repo.read(juegoPos).getNombreJuego()));
+					juegos.update(juegoPos, new Juego(dimXNew,dimYNew,juegos.read().get(juegoPos).getJugador(),juegos.read().get(juegoPos).getNombreJuego()));
 				}
 				break;
 
@@ -77,7 +77,7 @@ public class ViewCmdJuego {
 			case "4":
 				System.out.println("Introduce el nombre del : ");
 				String nombreJuegoToDelete = scanner.next();
-				int juegoToDelete = repo.buscar(nombreJuegoToDelete);
+				int juegoToDelete = juegos.buscar(nombreJuegoToDelete);
 				if ( juegoToDelete == -1) {
 					System.out.println("No se ha encontrado este jugador");
 				}

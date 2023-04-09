@@ -31,6 +31,10 @@ public class Juego {
 	public Juego(int dim,Jugador jugador,String nombreJuego) {
 		this(dim,dim,jugador,nombreJuego);
 	}
+	public Juego(Jugador jugador, String nombreJuego) {
+		this.jugador = jugador;
+		this.nombreJuego = nombreJuego;
+	}
 	/**
 	 * dimX o dimY si menor que 3, entonces valen 3.
 	 */
