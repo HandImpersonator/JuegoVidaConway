@@ -7,7 +7,6 @@ import jugador.model.Jugador;
  * @author RCD dabf
  *
  */
-//hh
 public class Juego {
 	private int dimX;
 	private int dimY;
