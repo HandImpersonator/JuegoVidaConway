@@ -2,7 +2,7 @@ package partida.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;hhhhhhhhhhhhhhhhhhhhhhhh
+import java.util.Scanner;
 
 import partida.model.Partida;
 import partida.repo.IRepoPartida;
