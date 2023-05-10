@@ -4,7 +4,7 @@ import jugador.model.Jugador;
 
 /**
  * Dimensiones.
- * @author RCD dabf
+ * 
  *
  */
 public class Juego {
@@ -12,17 +12,20 @@ public class Juego {
 	private int dimY;
 	private Jugador jugador;
 	private String nombreJuego;
+	private int[][] matriz;
 	/**
 	 * Constructor con las dos dimensiones.
 	 * @param dimX si menor que 3, entonces vale 3.
-	 * @param dimY si menor que 3, entonces vale 3.
+	 * @param dimY si menor que 3, entonces vale 3. 
 	 */
+	
 	public Juego(int dimX, int dimY,Jugador jugador,String nombreJuego) {
 		this.dimX = dimX;
 		this.dimY = dimY;
+		checkDim();
 		this.jugador = jugador;
 		this.nombreJuego = nombreJuego;
-		checkDim();
+		this.matriz = new int[dimX][dimY];
 	}
 	/**
 	 * Constructor con dimension cuadrada.
@@ -35,6 +38,12 @@ public class Juego {
 		this.jugador = jugador;
 		this.nombreJuego = nombreJuego;
 	}
+	public Juego(Jugador jugador,String nombreJuego, int[][] matriz) {
+		this.jugador = jugador;
+		this.nombreJuego = nombreJuego;
+		this.matriz = matriz;
+	}
+	
 	/**
 	 * dimX o dimY si menor que 3, entonces valen 3.
 	 */
