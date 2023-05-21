@@ -1,14 +1,13 @@
 package partida.model;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Random;
 
 import regla.model.Regla;
 
 
 public class Partida implements Serializable {
     private static final long serialVersionUID = 1L;
+    private int idExp;
     private int idPartida;
     private int numCeldasMuertas;
     private int numCeldasVivasInicio;
@@ -16,17 +15,9 @@ public class Partida implements Serializable {
     private int ronda;
     private Regla reglas; // Contiene las reglas de la partida.
 
-    public Partida(int idPartida, int numCeldasVivasInicio, Regla reglas) {
+    public Partida(int idExp, int idPartida, int numCeldasVivasInicio, Regla reglas) {
+        this.idExp = idExp;
         this.idPartida = idPartida;
-        this.numCeldasVivasInicio = numCeldasVivasInicio;
-        this.reglas = reglas;
-        numCeldasMuertas = 0;
-        numCeldasVivasFinal = numCeldasVivasInicio;
-        ronda = 0;
-    }
-
-    public Partida(int numCeldasVivasInicio, Regla reglas) {
-        idPartida = 0;
         this.numCeldasVivasInicio = numCeldasVivasInicio;
         this.reglas = reglas;
         numCeldasMuertas = 0;
@@ -40,7 +31,7 @@ public class Partida implements Serializable {
 
     @Override
     public String toString() {
-        return "Partida [ID Partida=" + idPartida + ", numCeldasVivasInicio=" + numCeldasVivasInicio
+        return "Partida [ID Expediente = " + idExp + ", ID Partida=" + idPartida + ", numCeldasVivasInicio=" + numCeldasVivasInicio
                 + ", numCeldasVivasFinal=" + numCeldasVivasFinal + ", numCeldasMuertas=" + numCeldasMuertas
                 + ", reglas=" + reglas + ", rondas=" + ronda + "]";
     }
@@ -53,22 +44,8 @@ public class Partida implements Serializable {
         return false;
     }
 
-    public static int generateRandom(List<Integer> list) {
-        Random rand = new Random();
-        int max = 90000;
-        int intRandom = 0;
-        while (intRandom < 10000) {
-            intRandom = rand.nextInt(max);
-            if (!checkInt(list, intRandom)) {
-                list.add(intRandom);
-
-            }
-        }
-        return intRandom;
-    }
-
-    public static boolean checkInt(List<Integer> list, int rand) {
-        return list.contains(rand);
+    public int getIdExp() {
+        return idExp;
     }
 
     public int getIdPartida() {
