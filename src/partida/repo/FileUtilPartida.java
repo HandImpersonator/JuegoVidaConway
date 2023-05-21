@@ -11,9 +11,10 @@ import partida.model.Partida;
 import regla.model.Regla;
 
 
+@Deprecated
 public class FileUtilPartida {
     private final String separador = "#";
-    private final String ruta = "data/partida.txt";
+    private final String ruta = "data\\partida.txt";
 
     public boolean save(List<Partida> p) {
         FileWriter fichero = null;
@@ -43,11 +44,12 @@ public class FileUtilPartida {
                 if (linea != "") {
                     linea.split(separador);
                     String[] temporal = linea.split(separador);
-                    datos.add(new Partida(new Integer(temporal[0]), new Integer(temporal[1]),
-                            new Regla(new Integer(temporal[2]), new Integer(temporal[3]), new Integer(temporal[4]),
-                                    temporal[5])));
+                    datos.add(new Partida(new Integer(temporal[0]), new Integer(temporal[1]), new Integer(temporal[2]),
+                            new Regla(new Integer(temporal[3]), new Integer(temporal[4]), new Integer(temporal[5]),
+                                    temporal[6])));
                 }
             }
+            s.close();
         } catch (Exception ex) {
             System.out.println("Mensaje: " + ex.getMessage());
         }

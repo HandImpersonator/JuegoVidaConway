@@ -22,12 +22,18 @@ public class RepoFilePartida implements IRepoPartida {
     }
 
     @Override
-    public List<Partida> read() {
+    public List<Partida> read(int idExp) {
         return partidas;
     }
 
     @Override
-    public boolean update(int posx, Partida partida) {
+    public List<Partida> readFile(String ruta) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean update(int idExp, int posx, Partida partida) {
         if ((posx < 0) || (posx >= partidas.size())) {
             return false;
         } else {
@@ -37,7 +43,7 @@ public class RepoFilePartida implements IRepoPartida {
     }
 
     @Override
-    public boolean remove(int posx) {
+    public boolean remove(int idExp, int posx) {
         if ((posx < 0) || (posx >= partidas.size())) {
             return false;
         } else {
@@ -47,9 +53,9 @@ public class RepoFilePartida implements IRepoPartida {
     }
 
     @Override
-    public int buscar(int id) {
+    public int buscar(int idE, int id) {
         for (int i = 0; i < partidas.size(); i++) {
-            if (partidas.get(i).equals(new Partida(id, 0, null))) {
+            if (partidas.get(i).equals(new Partida(id))) {
                 return i;
             }
         }

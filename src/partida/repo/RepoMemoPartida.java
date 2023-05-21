@@ -6,7 +6,8 @@ import java.util.Vector;
 import partida.model.Partida;
 
 
-public class RepoMemoPartida implements IRepoPartida {
+@Deprecated
+public abstract class RepoMemoPartida implements IRepoPartida {
 
     private List<Partida> partidas;
 
@@ -20,12 +21,12 @@ public class RepoMemoPartida implements IRepoPartida {
     }
 
     @Override
-    public List<Partida> read() {
+    public List<Partida> read(int idExp) {
         return partidas;
     }
 
     @Override
-    public boolean update(int posx, Partida Partida) {
+    public boolean update(int idExp, int posx, Partida Partida) {
         if ((posx < 0) || (posx >= partidas.size())) {
             return false;
         } else {
@@ -35,7 +36,7 @@ public class RepoMemoPartida implements IRepoPartida {
     }
 
     @Override
-    public boolean remove(int posx) {
+    public boolean remove(int idEx, int posx) {
         if ((posx < 0) || (posx >= partidas.size())) {
             return false;
         } else {
@@ -45,7 +46,7 @@ public class RepoMemoPartida implements IRepoPartida {
     }
 
     @Override
-    public int buscar(int id) {
+    public int buscar(int idE, int id) {
         for (int i = 0; i < partidas.size(); i++) {
             if (partidas.get(i).equals(new Partida(id))) {
                 return i;
