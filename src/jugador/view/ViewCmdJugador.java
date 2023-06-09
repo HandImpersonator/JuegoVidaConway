@@ -13,8 +13,6 @@ import jugador.repo.IRepoJugador;
 import jugador.repo.RepoFileBinJugador;
 import jugador.repo.RepoFileJugador;
 import jugador.repo.RepoMemoJugador;
-import partida.model.Partida;
-import regla.model.Regla;
 
 public class ViewCmdJugador {
 	private IRepoJugador jugadores;
@@ -113,7 +111,7 @@ public class ViewCmdJugador {
 			System.out.println("No se ha encontrado este jugador");
 		} else {
 			Jugador jugTemp = jugadores.read().get(j);
-			boolean b = jugTemp.addPartida(new Partida(0,0,new Regla(0,0,0)));
+			boolean b = jugTemp.addPartida("Partida");
 			jugadores.update(j,jugTemp);
 //			if (b) 
 //				System.out.println("Partida agregada correctamente");
