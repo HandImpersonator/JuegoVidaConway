@@ -97,7 +97,7 @@ public class ViewCmdCreateJuego {
 		nombre = scanner.next();
 		System.out.println("Introduce tu expediente: ");
 		expediente = scanner.nextInt();
-		System.out.println("Introduce eln nombre de tu juego: ");
+		System.out.println("Introduce el nombre de tu juego: ");
 		nombreJuego = scanner.next();
 	}
 	
