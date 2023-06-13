@@ -1,19 +1,14 @@
 package juego.view;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import common.util.CmdUtil;
-import juego.model.JuegoCuadPredefinido;
-import juego.repositorio.IRepoJuego;
 import jugador.model.Jugador;
 
 public class ViewCmdCreateMatriz {
-	private IRepoJuego juegos;
 	private Scanner scanner;
 
-	public ViewCmdCreateMatriz(IRepoJuego juegos, Scanner scanner) {
-		this.juegos = juegos;
+	public ViewCmdCreateMatriz(Scanner scanner) {
 		this.scanner = scanner;
 	}
 
@@ -22,7 +17,7 @@ public class ViewCmdCreateMatriz {
 		String nombre = scanner.next();
 		System.out.println("Introduce tu expediente: ");
 		int expediente = scanner.nextInt();
-		Jugador jugador = new Jugador(nombre, expediente);
+		Jugador jugador = new Jugador(expediente);
 		System.out.println("Introduce eln nombre de tu juego: ");
 		String nombreJuego = scanner.next();
 		System.out.println("Introduce la altura de la matriz: ");

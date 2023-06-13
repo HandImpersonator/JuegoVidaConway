@@ -1,22 +1,18 @@
 package juego.view;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import juego.model.Juego;
 import juego.model.JuegoCuadPredefinido;
 import juego.model.JuegoRectPredefinido;
-import juego.repositorio.IRepoJuego;
 import jugador.model.Jugador;
 
 public class ViewCmdCreateJuego {
-	private IRepoJuego juegos;
 	private Scanner scanner;
 	private String nombre;
 	private int expediente;
 	private String nombreJuego;
-	public ViewCmdCreateJuego(IRepoJuego juegos, Scanner scanner) {
-		this.juegos = juegos;
+	public ViewCmdCreateJuego(Scanner scanner) {
 		this.scanner = scanner;
 	}
 	public void menu() {
@@ -30,41 +26,41 @@ public class ViewCmdCreateJuego {
 			int respuestaForma = scanner.nextInt();
 			if (respuestaForma == 1) {
 				credencialesComunes();
-				JuegoCuadPredefinido juegocuad = new JuegoCuadPredefinido(0,0,new Jugador(nombre,expediente),nombreJuego);
+				JuegoCuadPredefinido juegocuad = new JuegoCuadPredefinido(0,0,new Jugador(expediente),nombreJuego);
 				System.out.println("1. 5x5  2. 10x10  3. 20x20");
 				int respuestaCuad = scanner.nextInt();
 				switch(respuestaCuad) {
 				case 1:
 					juegocuad.setJuego5();
-					juegos.create(juegocuad);
+					//juegos.create(juegocuad);
 					break;
 				case 2:
 					juegocuad.setJuego10();
-					juegos.create(juegocuad);
+					//juegos.create(juegocuad);
 					break;
 				case 3:
 					juegocuad.setJuego20();
-					juegos.create(juegocuad);
+					//juegos.create(juegocuad);
 					break;
 				}
 			}
 			else if(respuestaForma ==2) {
 				credencialesComunes();
-				JuegoRectPredefinido juegorect = new JuegoRectPredefinido(0,0,new Jugador(nombre,expediente),nombreJuego);
+				JuegoRectPredefinido juegorect = new JuegoRectPredefinido(0,0,new Jugador(expediente),nombreJuego);
 				System.out.println("1. 10x5  2. 20x10  3. 30x15");
 				int respuestaRect = scanner.nextInt();
 				switch(respuestaRect) {
 				case 1:
 					juegorect.setJuego10x5();
-					juegos.create(juegorect);
+					//juegos.create(juegorect);
 					break;
 				case 2:
 					juegorect.setJuego20x10();
-					juegos.create(juegorect);
+					//juegos.create(juegorect);
 					break;
 				case 3:
 					juegorect.setJuego30x15();
-					juegos.create(juegorect);
+					//juegos.create(juegorect);
 					break;
 				}
 			}
@@ -80,13 +76,13 @@ public class ViewCmdCreateJuego {
 			int dimX = scanner.nextInt();
 			System.out.println("Introduce la dimensión del eje y que quieras: ");
 			int dimY = scanner.nextInt();
-			Juego juego = new Juego(dimX,dimY,new Jugador(nombre,expediente),nombreJuego);
-			juegos.create(juego);
+			Juego juego = new Juego(dimX,dimY,new Jugador(expediente),nombreJuego);
+			//juegos.create(juego);
 			break;
 		case 3:
 			credencialesComunes();
-			ViewCmdCreateMatriz vccm = new ViewCmdCreateMatriz(juegos, scanner);
-			juegos.create(new Juego(new Jugador(nombre, expediente), nombreJuego, vccm.menu()));
+			ViewCmdCreateMatriz vccm = new ViewCmdCreateMatriz(scanner);
+			//juegos.create(new Juego(10, new Jugador(expediente), nombreJuego));
 			break;
 		}
 		
@@ -97,7 +93,7 @@ public class ViewCmdCreateJuego {
 		nombre = scanner.next();
 		System.out.println("Introduce tu expediente: ");
 		expediente = scanner.nextInt();
-		System.out.println("Introduce el nombre de tu juego: ");
+		System.out.println("Introduce eln nombre de tu juego: ");
 		nombreJuego = scanner.next();
 	}
 	

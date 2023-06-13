@@ -10,7 +10,7 @@
 
 package partida.model;
 
-import regla.model.Regla;
+import colour.model.Colour;
 
 public class PartidaPorDefecto extends Partida {
     private static final long serialVersionUID = 1L;
@@ -21,10 +21,9 @@ public class PartidaPorDefecto extends Partida {
      *
      * @param idExp                   El ID del expediente.
      * @param nombrePartida           El nombre de la partida.
-     * @param numCeldasVivasInicio    El número de celdas vivas al inicio de la partida.
      */
-    public PartidaPorDefecto(int idExp, String nombrePartida, int numCeldasVivasInicio) {
-        super(idExp, setRPartida(nombrePartida), numCeldasVivasInicio, new Regla(1, 2, 0));
+    public PartidaPorDefecto(int idExp, String nombrePartida, int [][] res, Colour colour) {
+        super(idExp, setRPartida(nombrePartida), res, colour);
     }
 
     /**

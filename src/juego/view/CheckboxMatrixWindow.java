@@ -1,56 +1,52 @@
 package juego.view;
 
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import colour.view.viewWindowSelectColor;
+import jugador.model.Jugador;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.*;
+import java.awt.*;
 
 public class CheckboxMatrixWindow extends JFrame {
-
-	private JPanel contentPane;
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private JCheckBox[][] checkboxes;
     private int[][] config_ini;
     private JButton acceptButton;
     private int[][] result;
 
-	/**
-	 * Create the frame.
-	 */
-	public CheckboxMatrixWindow(int filas, int columnas) {
-		checkboxes = new JCheckBox[filas][columnas];
-        config_ini = new int[filas][columnas];
+    public CheckboxMatrixWindow(Jugador jugador, int rows, int cols) {
+        checkboxes = new JCheckBox[rows][cols];
+        config_ini = new int[rows][cols];
         result = null;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Checkbox Matrix");
-        setLayout(new GridLayout(filas + 1, columnas)); // +1 para agregar la fila del botón
 
-        // Crear los checkboxes y agregarlos a la ventana
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
+        JPanel checkboxPanel = new JPanel(new GridLayout(rows, cols, 0, 0));
+        checkboxPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Agregar un margen al panel de checkboxes
+
+        // Crear los checkboxes y agregarlos al panel
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 checkboxes[i][j] = new JCheckBox();
-                add(checkboxes[i][j]);
+                checkboxes[i][j].setMargin(new Insets(0, 0, 0, 0)); // Reducir el espacio interno del checkbox
+                checkboxes[i][j].setBorderPaintedFlat(true); // Eliminar el borde alrededor del checkbox
+                checkboxPanel.add(checkboxes[i][j]);
             }
         }
 
         acceptButton = new JButton("Aceptar");
-        acceptButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                result = getConfigArray();
-                dispose(); // Cerrar la ventana después de pulsar el botón "Aceptar"
-            }
+        acceptButton.addActionListener(e -> {
+            result = getConfigArray();
+            viewWindowSelectColor vwsc = new viewWindowSelectColor(jugador, result);
+            vwsc.setVisible(true);
+            dispose(); // Cerrar la ventana después de pulsar el botón "Aceptar"
         });
-        add(acceptButton);
 
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(checkboxPanel, BorderLayout.CENTER);
+        mainPanel.add(acceptButton, BorderLayout.SOUTH);
+
+        setContentPane(mainPanel);
         pack();
         setResizable(false);
         centerWindow();
@@ -67,7 +63,7 @@ public class CheckboxMatrixWindow extends JFrame {
         setLocation(xPos, yPos);
         setVisible(true);
     }
-    
+
     public int[][] getConfigArray() {
         for (int i = 0; i < checkboxes.length; i++) {
             for (int j = 0; j < checkboxes[0].length; j++) {
@@ -81,5 +77,4 @@ public class CheckboxMatrixWindow extends JFrame {
         return result;
     }
 
-    
- }
+}

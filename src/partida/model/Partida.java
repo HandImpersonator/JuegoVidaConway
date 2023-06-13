@@ -12,37 +12,31 @@
 
 package partida.model;
 
-import java.io.Serializable;
+import colour.model.Colour;
 
-import regla.model.Regla;
+import java.io.Serializable;
+import java.util.Arrays;
 
 
 public class Partida implements Serializable {
     private static final long serialVersionUID = 1L;
     private int idExp;
     private int idPartida;
-    private int numCeldasMuertas;
-    private int numCeldasVivasInicio;
-    private int numCeldasVivasFinal;
-    private int ronda;
-    private Regla reglas;
+    private int[][] p;
+    private Colour colour;
 
     /**
      * Constructor de la clase Partida.
      *
      * @param idExp                 El ID del expediente.
      * @param idPartida             El ID de la partida.
-     * @param numCeldasVivasInicio  El número de celdas vivas al inicio de la partida.
-     * @param reglas                Las reglas del juego.
+     * @param partida  El número de celdas vivas al inicio de la partida.
      */
-    public Partida(int idExp, int idPartida, int numCeldasVivasInicio, Regla reglas) {
+    public Partida(int idExp, int idPartida, int[][] partida, Colour colour) {
         this.idExp = idExp;
         this.idPartida = idPartida;
-        this.numCeldasVivasInicio = numCeldasVivasInicio;
-        this.reglas = reglas;
-        numCeldasMuertas = 0;
-        numCeldasVivasFinal = numCeldasVivasInicio;
-        ronda = 0;
+        this.p = partida;
+        this.colour = colour;
     }
 
     /**
@@ -61,9 +55,7 @@ public class Partida implements Serializable {
      */
     @Override
     public String toString() {
-        return "Partida [ID Expediente = " + idExp + ", ID Partida=" + idPartida + ", numCeldasVivasInicio=" + numCeldasVivasInicio
-                + ", numCeldasVivasFinal=" + numCeldasVivasFinal + ", numCeldasMuertas=" + numCeldasMuertas
-                + ", reglas=" + reglas + ", rondas=" + ronda + "]";
+        return "Partida [ID Expediente = " + idExp + ", ID Partida=" + idPartida + ", configuración = " + Arrays.deepToString(p) + ", color = " + colour + "]";
     }
 
     /**
@@ -103,69 +95,6 @@ public class Partida implements Serializable {
      */
     public void setIdPartida(int idPartida) {
         this.idPartida = idPartida;
-    }
-
-    /**
-     * Devuelve el número de celdas vivas al inicio de la partida.
-     *
-     * @return El número de celdas vivas al inicio de la partida.
-     */
-    public int getNumCeldasVivasInicio() {
-        return numCeldasVivasInicio;
-    }
-
-    /**
-     * Devuelve el número de celdas muertas.
-     *
-     * @return El número de celdas muertas.
-     */
-    public int getNumCeldasMuertas() {
-        return numCeldasMuertas;
-    }
-
-    /**
-     * Devuelve el número de celdas vivas al final de la partida.
-     *
-     * @return El número de celdas vivas al final de la partida.
-     */
-    public int getNumCeldasVivasFinal() {
-        return numCeldasVivasFinal;
-    }
-
-    /**
-     * Devuelve el número de la ronda actual.
-     *
-     * @return El número de la ronda actual.
-     */
-    public int getRonda() {
-        return ronda;
-    }
-
-    /**
-     * Avanza a la siguiente ronda de la partida.
-     * Incrementa el número de ronda en 1.
-     * (Aquí se deben aplicar las reglas del juego).
-     */
-    public void nextRonda() {
-        ronda++;
-    }
-
-    /**
-     * Establece el número de la ronda actual.
-     *
-     * @param ronda El nuevo número de la ronda actual.
-     */
-    public void setRonda(int ronda) {
-        this.ronda = ronda;
-    }
-
-    /**
-     * Devuelve las reglas del juego.
-     *
-     * @return Las reglas del juego.
-     */
-    public Regla getReglas() {
-        return reglas;
     }
 
 }

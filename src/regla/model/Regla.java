@@ -1,24 +1,22 @@
 package regla.model;
-import java.util.List;
 
-public class Regla {
-	
-		
-		private String nombredereglas;
-		private int nvivasrevive; 
-		private int nvivasmuere ;
-		private int nvivasvive ;
+import java.io.Serializable;
+
+public class Regla implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String nombredereglas;
+	private int nvivasrevive; 
+	private int nvivasmuere ;
+	private int nvivasvive ;
 		
 		public Regla( int nvivasrevive, int nvivasmuere, int nvivasvive) {
-			
 			this.nvivasrevive = nvivasrevive;
 			this.nvivasmuere = nvivasmuere;
 			this.nvivasvive = nvivasvive;
 			this.nombredereglas= "default";
 		}
 
-		public Regla( int nvivasrevive, int nvivasmuere, int nvivasvive,String nombredereglas) {
-		
+		public Regla( int nvivasrevive, int nvivasmuere, int nvivasvive, String nombredereglas) {
 			this.nvivasrevive = nvivasrevive;
 			this.nvivasmuere = nvivasmuere;
 			this.nvivasvive = nvivasvive;
